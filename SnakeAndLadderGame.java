@@ -19,7 +19,11 @@ public class SnakeAndLadderGame {
                 System.out.println("Player's position is less than 0. Resetting to 0.");
                 playerPosition = 0;
             }
-            if (playerPosition == BoardSize) {
+            else if (playerPosition > BoardSize) {
+                System.out.println("Player's position is above 100. Staying at the previous position.");
+                playerPosition -= diceRoll; // Move the player back to the previous position
+            }
+            else if (playerPosition == BoardSize) {
                 System.out.println("Congratulations! You won the Game!!!");
                 break;
             }
