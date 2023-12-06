@@ -4,17 +4,19 @@ public class SnakeAndLadderGame {
     public static void main(String[] args) {
         int playerPosition = 0;
         int BoardSize = 100;
+        int diceRollCount = 0;
         System.out.println("The game start at position: "+playerPosition);
         System.out.println("The size of the game board is: "+BoardSize);
 
-        playGame(playerPosition, BoardSize);
+        playGame(playerPosition, BoardSize, diceRollCount);
     }
-    static void playGame(int playerPosition,int BoardSize) {
+    static void playGame(int playerPosition,int BoardSize,int diceRollCount) {
         while (playerPosition < BoardSize) {
             int diceRoll = rollDice();
             int option = checkOption();
             playerPosition = movePlayer(playerPosition, option, diceRoll);
             System.out.println("After rolling a " + diceRoll + ", the player is at position " + playerPosition);
+            diceRollCount++;
             if (playerPosition < 0) {
                 System.out.println("Player's position is less than 0. Resetting to 0.");
                 playerPosition = 0;
@@ -25,6 +27,7 @@ public class SnakeAndLadderGame {
             }
             else if (playerPosition == BoardSize) {
                 System.out.println("Congratulations! You won the Game!!!");
+                System.out.println("Number of times the dice was played to win the game: " + diceRollCount);
                 break;
             }
         }
