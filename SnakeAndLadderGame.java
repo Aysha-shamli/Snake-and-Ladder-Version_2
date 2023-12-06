@@ -15,7 +15,10 @@ public class SnakeAndLadderGame {
             int option = checkOption();
             playerPosition = movePlayer(playerPosition, option, diceRoll);
             System.out.println("After rolling a " + diceRoll + ", the player is at position " + playerPosition);
-            
+            if (playerPosition < 0) {
+                System.out.println("Player's position is less than 0. Resetting to 0.");
+                playerPosition = 0;
+            }
             if (playerPosition == BoardSize) {
                 System.out.println("Congratulations! You won the Game!!!");
                 break;
